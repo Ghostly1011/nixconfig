@@ -12,7 +12,7 @@ let
           "2": "cyan",
         },
       },
-      modules: [
+      "modules": [
         "title",
         "separator",
         "packages",
