@@ -1,13 +1,11 @@
 { config, lib, pkgs, ... }:
 
-let
-  home-manager = builtins.fetchTarball https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz;
-in
 {
   imports =
     [
       ./hardware-configuration.nix # Include automatic hardware configuration.
-      (import "${home-manager}/nixos")
+      ./modules/fastfetch.nix
+      ./modules/kitty.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -31,6 +29,7 @@ in
     git
     gh
     fastfetch
+    nerd-fonts.fira-code
   ];
 
   services.displayManager.sddm.enable = true;
@@ -48,54 +47,17 @@ in
   programs.fish.enable = true;
   programs.fish.interactiveShellInit = "fastfetch";
   programs.fish.shellAliases = {
-    rebuild = /etc/nixos/rebuild.fish;
+    rebuild = /etc/nixos/scripts/rebuild.fish;
   };
 
   programs.starship.enable = true;
   programs.starship.presets = [ "nerd-font-symbols" ];
 
+  programs.firefox.enable = true;
+  
   users.users.oliverk = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-  };
-
-  home-manager.users.oliverk = {
-    programs.fastfetch.enable = true;
-    programs.fastfetch.settings = {
-      logo = {
-        source = "/etc/nixos/fastfetch-logo.txt";
-        color = {
-          "1" = "blue";
-          "2" = "cyan";
-        };
-      };
-      modules = [
-        "title"
-        "separator"
-        "packages"
-        "uptime"
-        "cpu"
-        "memory"
-        "disk"
-        "localip"
-        "break"
-        {
-          type = "colors";
-          symbol = "circle";
-        }
-      ];
-    };
-    programs.kitty.enable = true;
-    programs.kitty.shellIntegration.enableFishIntegration = true;
-    programs.kitty.font = {
-      package = pkgs.nerd-fonts.fira-code;
-      name = "FiraCode Nerd Font";
-      size = 12;
-    };
-
-    programs.firefox.enable = true;
-
-    home.stateVersion = "25.05"; # Do not change.
   };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
