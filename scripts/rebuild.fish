@@ -9,14 +9,14 @@ set config_file /etc/nixos/configuration.nix
 set log_file /etc/nixos/rebuild.log
 
 # Open config file in editor
-hx config_file
+hx $config_file
 
 # Show git diff after editing
 git diff $config_file
 
 # Run nixos-rebuild and log output
-echo " Running nixos-rebuild..."
-nixos-rebuild switch >$log_file
+echo "Running nixos-rebuild..."
+nixos-rebuild switch &>$log_file
 
 # Check for errors in log (case-insensitive)
 set error_lines (grep -i 'error' $log_file)

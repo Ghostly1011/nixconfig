@@ -29,6 +29,7 @@ in
   environment.systemPackages = with pkgs; [
     helix # Modal text editor.
     git
+    gh
     fastfetch
   ];
 
@@ -51,7 +52,7 @@ in
   };
 
   programs.starship.enable = true;
-  programs.starship.presets = [ "nerd-font-symbols' "];
+  programs.starship.presets = [ "nerd-font-symbols" ];
 
   users.users.oliverk = {
     isNormalUser = true;
@@ -59,7 +60,6 @@ in
   };
 
   home-manager.users.oliverk = {
-    programs.starship.enable = true;
     programs.fastfetch.enable = true;
     programs.fastfetch.settings = {
       logo = {
