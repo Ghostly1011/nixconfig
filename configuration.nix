@@ -45,7 +45,10 @@
 
   programs.bash.interactiveShellInit = "exec fish";
   programs.fish.enable = true;
-  programs.fish.interactiveShellInit = "fastfetch";
+  programs.fish.interactiveShellInit = ''
+    set fish_greeting
+    fastfetch
+  '';
   programs.fish.shellAliases = {
     rebuild = "fish /etc/nixos/scripts/rebuild.fish";
   };
