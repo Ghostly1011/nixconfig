@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  fastfetchdir = /home/oliverk/.config/fastfetch;
+  fastfetchdir = "/home/oliverk/.config/fastfetch";
   
   fastfetchconf = ''
     "logo": {

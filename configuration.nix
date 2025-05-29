@@ -47,7 +47,7 @@
   programs.fish.enable = true;
   programs.fish.interactiveShellInit = "fastfetch";
   programs.fish.shellAliases = {
-    rebuild = /etc/nixos/scripts/rebuild.fish;
+    rebuild = "fish /etc/nixos/scripts/rebuild.fish";
   };
 
   programs.starship.enable = true;

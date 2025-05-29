@@ -29,5 +29,5 @@ end
 set generation (nixos-rebuild list-generations | grep 'current')
 
 # No errors, commit the config
-git add $config_file
+git add .
 git commit -m $generation
