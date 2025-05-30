@@ -7,6 +7,8 @@
       ./modules/fastfetch.nix
       ./modules/kitty.nix
       ./modules/helix.nix
+      ./modules/bat.nix
+      ./modules/lsd.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -31,6 +33,8 @@
     gh
     fastfetch
     nerd-fonts.fira-code
+    bat
+    lsd
   ];
 
   services.displayManager.sddm.enable = true;

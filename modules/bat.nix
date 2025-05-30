@@ -13,7 +13,7 @@ in
     text = ''
       mkdir -p ${batdir}
       echo '${batconf}' > ${batdir}/config
-      cp ${batthemes} ${batdir}/themes
+      cp -r ${batthemes} ${batdir}/themes
     '';
   };
 }
