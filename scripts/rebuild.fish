@@ -5,14 +5,17 @@ if not fish_is_root_user
     exit 1
 end
 
-set config_file /etc/nixos/configuration.nix
-set log_file /etc/nixos/rebuild.log
+set nixdir /home/oliverk/nixconfig/
+set config_file "configuration.nix"
+set log_file "rebuild.log"
+
+pushd $nixdir
 
 # Open config file in editor
 hx $config_file
 
 # Show git diff after editing
-git diff $config_file
+git diff
 
 # Run nixos-rebuild and log output
 echo "Running nixos-rebuild..."
@@ -26,8 +29,10 @@ if test -n "$error_lines"
     exit 1
 end
 
+# No errors, commit the config
 set generation (nixos-rebuild list-generations | grep 'current')
 
-# No errors, commit the config
 git add .
 git commit -m $generation
+
+popd
