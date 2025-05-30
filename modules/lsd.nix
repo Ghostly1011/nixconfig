@@ -14,7 +14,7 @@ in
     text = ''
       mkdir -p ${lsddir}
       echo '${lsdconf}' > ${lsddir}/config.yaml
-      cp ${lsdcolors} > ${lsddir}
+      cp ${lsdcolors} ${lsddir}
     '';
   };
 }
