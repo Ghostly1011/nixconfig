@@ -49,7 +49,7 @@
     set fish_greeting
     fastfetch
   '';
-  programs.fish.shellAliases = {
+  environment.shellAliases = {
     rebuild = "sudo fish /home/oliverk/nixconfig/scripts/rebuild.fish";
   };
 
