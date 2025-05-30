@@ -4,11 +4,10 @@
   imports =
     [
       ./hardware-configuration.nix # Include automatic hardware configuration.
-      ./modules/fastfetch.nix
       ./modules/kitty.nix
-      ./modules/helix.nix
+      ./modules/fastfetch.nix
       ./modules/bat.nix
-      ./modules/lsd.nix
+      ./modules/helix.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -28,13 +27,14 @@
   };
 
   environment.systemPackages = with pkgs; [
+    kitty
+    nerd-fonts.fira-code
+    fastfetch
+    lsd
+    bat
     helix # Modal text editor.
     git
     gh
-    fastfetch
-    nerd-fonts.fira-code
-    bat
-    lsd
   ];
 
   services.displayManager.sddm.enable = true;
@@ -55,9 +55,10 @@
     fastfetch
   '';
   environment.shellAliases = {
+    cat = "bat";
+    ls = "lsd";
     rebuild = "fish /home/oliverk/nixconfig/scripts/rebuild.fish";
   };
-
   programs.starship.enable = true;
   programs.starship.presets = [ "nerd-font-symbols" ];
 

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 let
   kittydir = "/home/oliverk/.config/kitty";

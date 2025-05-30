@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 let
   lsddir = "/home/oliverk/.config/lsd";

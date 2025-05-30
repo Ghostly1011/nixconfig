@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 let
   fastfetchdir = "/home/oliverk/.config/fastfetch";

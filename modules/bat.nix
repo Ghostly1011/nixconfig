@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 let
   batdir = "/home/oliverk/.config/bat";
