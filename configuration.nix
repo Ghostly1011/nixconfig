@@ -51,7 +51,7 @@
     fastfetch
   '';
   environment.shellAliases = {
-    rebuild = "sudo fish /home/oliverk/nixconfig/scripts/rebuild.fish";
+    rebuild = "fish /home/oliverk/nixconfig/scripts/rebuild.fish";
   };
 
   programs.starship.enable = true;
