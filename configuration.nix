@@ -6,6 +6,7 @@
       ./hardware-configuration.nix # Include automatic hardware configuration.
       ./modules/fastfetch.nix
       ./modules/kitty.nix
+      ./modules/helix.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
