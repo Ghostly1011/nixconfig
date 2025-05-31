@@ -28,15 +28,20 @@
     fastfetch # System info display.
     lsd # Replacement for ls.
     bat # Replacement for cat.
+    
     helix # Modal text editor.
     git
     gh # Github CLI.
 
+    where-is-my-sddm-theme
+    catppuccin-cursors.mochaLight
+    hyprpaper
     tofi # Application launcher.
   ];
 
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
+  services.displayManager.sddm.theme = "where-is-my-sddm-theme";
 
   programs.hyprland.enable = true;  
   programs.waybar.enable = true;
