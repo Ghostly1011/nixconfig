@@ -4,12 +4,6 @@
   imports =
     [
       ./hardware-configuration.nix # Include automatic hardware configuration.
-      ./modules/kitty.nix
-      ./modules/fastfetch.nix
-      ./modules/bat.nix
-      ./modules/helix.nix
-
-      ./modules/hyprland.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -29,16 +23,16 @@
   };
 
   environment.systemPackages = with pkgs; [
-    kitty
+    kitty # Terminal emulator.
     nerd-fonts.fira-code
-    fastfetch
-    lsd
-    bat
+    fastfetch # System info display.
+    lsd # Replacement for ls.
+    bat # Replacement for cat.
     helix # Modal text editor.
     git
-    gh
+    gh # Github CLI.
 
-    tofi
+    tofi # Application launcher.
   ];
 
   services.displayManager.sddm.enable = true;
@@ -62,7 +56,7 @@
   environment.shellAliases = {
     cat = "bat";
     ls = "lsd";
-    rebuild = "fish /home/oliverk/nixconfig/scripts/rebuild.fish";
+    rebuild = "fish ~/nixconfig/scripts/rebuild.fish";
   };
   programs.starship.enable = true;
   programs.starship.presets = [ "nerd-font-symbols" ];
@@ -72,6 +66,13 @@
   users.users.oliverk = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+  };
+
+  system.userActivationScripts.config = {
+    text=''
+      echo 'Copying config files'
+      cp -r /etc/nixos/config/* ~/.config/
+    '';
   };
 
   system.autoUpgrade.enable = true;
