@@ -8,6 +8,8 @@
       ./modules/fastfetch.nix
       ./modules/bat.nix
       ./modules/helix.nix
+
+      ./modules/hyprland.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -35,12 +37,15 @@
     helix # Modal text editor.
     git
     gh
+
+    tofi
   ];
 
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
 
   programs.hyprland.enable = true;  
+  programs.waybar.enable = true;
 
   # Enable sound.
   services.pipewire = {
